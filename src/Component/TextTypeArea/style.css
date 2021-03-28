@@ -18,7 +18,7 @@
   top: 0px;
   left: 0;
   content: attr(data-descr);
-  width: 100%;
+  width: 99%;
   height: 100%;
   opacity: 0.5;
   /* font-weight: bold; */
