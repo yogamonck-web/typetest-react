@@ -55,7 +55,6 @@ const TestPage = () => {
     });
 
     const currentCursor = document.querySelectorAll(".user-input");
-    console.log(currentCursor);
     if (currentCursor[currentCursor.length - 1]) {
       currentCursor[currentCursor.length - 1].scrollIntoView();
     }

@@ -21,7 +21,6 @@ const TestPageTimer:React.FC<Props> = ({time}) => {
     };
   }, [timer]);
 
-console.log("time",time)
 
   return (
       <Snackbar open message={"Time left " + timer} />

@@ -21,7 +21,6 @@ const TestDetailsContext = (props) => {
     }else{
       settestData(hardText)
     }
-    console.log(testData)
   },[level,testData])
 
  

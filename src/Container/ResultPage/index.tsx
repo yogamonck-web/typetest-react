@@ -68,7 +68,6 @@ const ResultPage = () => {
     }
   }, []);
 
-  console.log("user data", userInput);
 
   return (
     <CustomContainer spacing={2} justify="flex-start" alignContent="flex-start">
