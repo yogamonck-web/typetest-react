@@ -26,8 +26,8 @@ const TestPage = () => {
     if (blind) {
       return `<b class="user-input-blind">${realText[index]}</b>`;
     }
-    if (key !== realText[index]) {
-      return `<b class="user-input wrong-input">${realText[index]}</b>`;
+    else if (key !== realText[index]) {
+      return `<b class="user-input wrong-input">${realText[index]!==" "?realText[index]:"_"}</b>`;
     } else {
       return `<b class="user-input  right-input">${key}</b>`;
     }
