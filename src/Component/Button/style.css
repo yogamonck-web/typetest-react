@@ -1,0 +1,12 @@
+.btn-full-light{
+    background-color: #b17979 !important;
+    color: #fff !important;
+    margin: 10px 0 !important;
+}
+.btn-ghost-light{
+    background-color: transparent !important;
+    color: #b17979 !important;
+    margin: 10px 0 !important;
+    border: #de9898 solid 2px;
+    border-radius: 10px;
+}
