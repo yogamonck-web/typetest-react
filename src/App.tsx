@@ -5,17 +5,20 @@ import NavBar from "./Container/Navbar";
 import PreTestPage from "./Container/PreTestPage";
 import ResultPage from "./Container/ResultPage";
 import TestPage from "./Container/TestPage";
+import TestDetailsContext from "./ContextProviders/testDetails";
 
 export default function App() {
   return (
     <Router>
       <NavBar />
-        <Switch>
-            <Route path="/test" component={TestPage} />
-            <Route path="/preTest" component={PreTestPage} />
-            <Route path="/result" component={ResultPage} />
-            <Route path="/*" component={LandingPage} />
-        </Switch>
+      <Switch>
+        <TestDetailsContext>
+          <Route exact  path="/test" component={TestPage} />
+          <Route exact path="/preTest" component={PreTestPage} />
+          <Route exact path="/result" component={ResultPage} />
+          <Route exact path="/*" component={LandingPage} />
+        </TestDetailsContext>
+      </Switch>
     </Router>
   );
 }
