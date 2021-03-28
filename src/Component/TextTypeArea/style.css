@@ -8,7 +8,7 @@
   font-size: 23px;
   width: 60%;
   font-weight: 300 !important;
-  word-break: break-all;
+  word-break: inherit;
   /* background-color: red; */
 }
 
@@ -19,7 +19,7 @@
   content: attr(data-descr);
   width: 99%;
   height: 100%;
-  word-break: break-all;
+  word-break: inherit;
 
   opacity: 0.5;
   /* font-weight: bold; */
