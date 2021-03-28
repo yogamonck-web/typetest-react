@@ -18,8 +18,9 @@ const ResultPage = () => {
   // const userInput = `<b class="user-input  right-input">A</b><b class="user-input  right-input"> </b><b class="user-input  right-input">b</b><b class="user-input  right-input">o</b><b class="user-input wrong-input">y</b><b class="user-input  right-input"> </b><b class="user-input  right-input">n</b><b class="user-input  right-input">a</b><b class="user-input  right-input">m</b><b class="user-input  right-input">e</b><b class="user-input  right-input">d</b><b class="user-input  right-input"> </b><b class="user-input wrong-input">J</b><b class="user-input  right-input">o</b><b class="user-input  right-input">h</b><b class="user-input  right-input">n</b><b class="user-input  right-input"> </b><b class="user-input  right-input">w</b><b class="user-input  right-input">a</b><b class="user-input  right-input">s</b><b class="user-input  right-input"> </b><b class="user-input  right-input">u</b><b class="user-input  right-input">p</b><b class="user-input  right-input">s</b><b class="user-input  right-input">e</b><b class="user-input  right-input">t</b><b class="user-input wrong-input">.</b><b class="user-input wrong-input"> </b><b class="user-input wrong-input">H</b><b class="user-input wrong-input">i</b><b class="user-input wrong-input">s</b><b class="user-input wrong-input"> </b><b class="user-input wrong-input">f</b><b class="user-input wrong-input">a</b><b class="user-input wrong-input">t</b><b class="user-input wrong-input">h</b><b class="user-input  right-input">e</b><b class="user-input  right-input">r</b><b class="user-input  right-input"> </b><b class="user-input  right-input">f</b><b class="user-input  right-input">o</b><b class="user-input  right-input">u</b><b class="user-input  right-input">n</b><b class="user-input  right-input">d</b><b class="user-input  right-input"> </b><b class="user-input  right-input">h</b><b class="user-input  right-input">i</b><b class="user-input  right-input">m</b><b class="user-input  right-input"> </b><b class="user-input  right-input">c</b><b class="user-input  right-input">r</b><b class="user-input  right-input">y</b><b class="user-input wrong-input">i</b><b class="user-input wrong-input">n</b><b class="user-input wrong-input">g</b><b class="user-input wrong-input">.</b><b class="user-input wrong-input">W</b><b class="user-input wrong-input">h</b><b class="user-input wrong-input">e</b>`;
 
   const getRightWrongNumberOfWords = (userString: string) => {
-    const uStringArr = userString.split(" ");
-    const actualStringArr = realText.split(" ");
+    const uStringArr = userString.split(" ").filter( (item:string) => item !== " " && item !== "");
+    const actualStringArr = realText.split(" ").filter( (item:string) => item !== " "&& item !== "");
+    
     let correct = 0;
     let wrong = 0;
     for (let i = 0; i < uStringArr.length; i++) {
@@ -35,11 +36,18 @@ const ResultPage = () => {
 
   useEffect(() => {
     try {
+      let cleanUserUnput = userInput.replace(`<b class="user-input  wrong-input"> </b>`, "");
+      cleanUserUnput = userInput.replace(`<b class="user-input  right-input"> </b>`, "");
+      let wronAns 
       const userRawInput = userInput
         .split("</b>")
-        .map((item:any) => item[item.length - 1])
+        .map((item: any) => {
+          if(item.includes("wrong-input")){
+            return "*"
+          }
+          return item[item.length - 1]
+        })
         .join("");
-      console.log("userRawInput", userRawInput);
       const { correct, wrong, totalWords } = getRightWrongNumberOfWords(
         userRawInput
       );
@@ -51,10 +59,12 @@ const ResultPage = () => {
         return;
       }
 
-      setAccuracy((correct + wrong) / (correct + 0.001)); // to save from correct = 0 case
+      // target/total
+
+      setAccuracy(((correct / (correct + wrong + 0.001))*100)); // to save from correct = 0 case
       setPoints(correct * 10 - wrong * 5);
     } catch (e) {
-      history.push('/preTest')
+      history.push("/preTest");
     }
   }, []);
 
@@ -72,7 +82,7 @@ const ResultPage = () => {
       </Grid>
       <Grid item xs={12} xl={12} md={3}>
         <Card elevation={3}>
-          <CardContent>{accuracy} Accuracy</CardContent>
+          <CardContent>{accuracy.toFixed(2)}% Accuracy</CardContent>
         </Card>
       </Grid>
 
