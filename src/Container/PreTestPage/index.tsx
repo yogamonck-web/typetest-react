@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Grid,  Switch } from "@material-ui/core";
 import { useHistory } from "react-router";
 
@@ -40,7 +40,7 @@ const PreTestPage = () => {
     >
       <Grid item>
         <CustomText text="Level" />
-        <Grid container spacing={1} xs={12}>
+        <Grid container spacing={1}>
           {typeOfLvl.map(({ text, value }) => (
             <Grid item>
               <CustomButton
@@ -54,7 +54,7 @@ const PreTestPage = () => {
       </Grid>
       <Grid item>
         <CustomText text="Time" />
-        <Grid container spacing={1} xs={12}>
+        <Grid container spacing={1}>
           {typeOfTime.map(({ text, value }) => (
             <Grid item>
               <CustomButton
@@ -69,8 +69,8 @@ const PreTestPage = () => {
       <Grid item>
         <CustomText text="Blind" />
 
-        <Grid container spacing={1} xs={12}>
-          <Grid item spacing={2} xs={12}>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
             <Switch
               checked={blind}
               onChange={() => setBlind(!blind)}

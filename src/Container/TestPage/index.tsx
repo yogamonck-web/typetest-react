@@ -1,17 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { useHistory } from "react-router";
 import TypeTestArea from "../../Component/TextTypeArea";
 import TestPageTimer from "../../Component/Timer";
 import { TestDetailsDataContext } from "../../ContextProviders/testDetails";
 
 const TestPage = () => {
-  const { level, time, blind, testData: realText, setuserInput } = useContext(
+  const {  time, blind, testData: realText, setuserInput } = useContext(
     TestDetailsDataContext
   );
   const [userInput, setUserInput] = useState<string[]>([]);
   const textDisplayElement = useRef<HTMLElement | null>(null) as any;
-  const history = useHistory()
-
+  
   useEffect(()=>{
     window.onbeforeunload = ()=> {
       window.setTimeout(function () { 

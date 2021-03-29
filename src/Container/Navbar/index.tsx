@@ -7,9 +7,9 @@ const NavBar = () => {
 
   return (
     <Paper elevation={1}>
-      <Grid container xs={12} spacing={0}>
-        <Grid item alignItems="center" xs={10} md={11}>
-          <img src="/images/logo_full.png" />
+      <Grid container spacing={0}>
+        <Grid item xs={10} md={11}>
+          <img alt="logo-flashwriter" src="/images/logo_full.png" />
         </Grid>
         <Grid item xs={2} md={1}>
           <GitHubIcon

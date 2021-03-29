@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import React from "react";
 import { useHistory } from "react-router";
 import CustomButton from "../../Component/Button";
@@ -14,7 +14,7 @@ const LandingPage = () => {
 
   return (
     <CustomContainer>
-      <Grid container xs={12} lg={6} spacing={0} alignContent="center">
+      <Grid container spacing={0} alignContent="center">
         <Grid item xs={12}>
           <CustomText text={"Finger workout."} fs="70px" />
         </Grid>
@@ -38,7 +38,7 @@ const LandingPage = () => {
       </Grid>
 
       <Grid item xs={12} lg={6}>
-        <img src="/images/ladyAndLaptop.svg" height="90%" width="90%" />
+        <img alt="ladyAndLaptop" src="/images/ladyAndLaptop.svg" height="90%" width="90%" />
       </Grid>
     </CustomContainer>
   );
